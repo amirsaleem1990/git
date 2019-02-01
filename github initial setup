@@ -1,5 +1,5 @@
 # github
-a= mkdir github ; cd github/ ; git init ; git config --global user.name "amirsaleem1990" ; git config --global user.email "amirsaleem1990@hotmail.com"
+cd ~ ; mkdir github ; cd github/ ; git init ; git config --global user.name "amirsaleem1990" ; git config --global user.email "amirsaleem1990@hotmail.com"
 
 1- go to https://github.com/settings/keys and delete existing SSH key
 2- ssh-keygen -t rsa -b 4096 -C "amirsaleem1990@hotmail.com"

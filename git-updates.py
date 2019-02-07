@@ -20,7 +20,10 @@ for repo in repos:
                     if i.startswith("On branch") or i.startswith("Your branch")  or i.startswith("Changes not staged") or i.startswith("(") or i.startswith("no changes added to") or i.startswith("Untracked files") or i.startswith("nothing added to commit"):
                         pass
                     else:
-                        print(i)
+                    	if "modified:" in i:
+                    		print(i.replace("modified:", "").strip())
+                    	else:	
+	                        print(i)
             print("\n\n")
         os.chdir("..")
 os.system("rm -r /home/amir/Desktop/temprory-github-folder")

@@ -20,16 +20,16 @@ cd ~ ; mkdir github ; cd github/ ; git init ; git config --global user.name "ami
 import os
 base = "git@github.com:amirsaleem1990/"
 for i in [
-"The-analytics-edge.git",
 "Linux.git",
 "short-codes.git",
-"important.git",
 "Notes.git",
-"Assembly-language-learning.git",
-"linux_youtube_downloader.git",
-"working.git",
 "Data_Cleaning.git",
-"R_simple_codes.git",
-"Wikipedia_scraping.git"
+"https://github.com/amirsaleem1990/datasciencecoursera.git",
+"https://github.com/amirsaleem1990/R_language.git",
+"https://github.com/amirsaleem1990/C-programming-A_Modern_Approach-book-Exercises-.git",
+"git@github.com:amirsaleem1990/Kaggle-compitations.git",
+"git@github.com:amirsaleem1990/FL.git",
+"git@github.com:amirsaleem1990/Amir-personal.git",
+"git@github.com:amirsaleem1990/LFD-projects.git"
 ]:
-	os.system("git clone {}{}".format(base, i))
+os.system("git clone {}{}".format(base, i))

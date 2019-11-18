@@ -19,15 +19,16 @@ cd ~ ; mkdir github ; cd github/ ; git init ; git config --global user.name "ami
 14- ipython
 import os
 base = ""
-for i in ["git@github.com:amirsaleem1990/Linux.git",
-	"git@github.com:amirsaleem1990/short-codes.git",
-	"git@github.com:amirsaleem1990/Notes.git", 
-	"git@github.com:amirsaleem1990/Data_Cleaning.git", 
-	"https://github.com/amirsaleem1990/datasciencecoursera.git",
-	"https://github.com/amirsaleem1990/R_language.git", 
-	"https://github.com/amirsaleem1990/C-programming-A_Modern_Approach-book-Exercises-.git",
-	"git@github.com:amirsaleem1990/Kaggle-compitations.git", 
-	"git@github.com:amirsaleem1990/FL.git",
-	"git@github.com:amirsaleem1990/Amir-personal.git", 
-	"git@github.com:amirsaleem1990/LFD-projects.git"]:
-	os.system(f"git clone {i}")
+f = "git@github.com:amirsaleem1990/"
+for i in ["Linux.git",
+	"short-codes.git",
+	"Notes.git", 
+	"Data_Cleaning.git", 
+	"R_language.git", 
+	"Kaggle-compitations.git", 
+	"Amir-personal.git", 
+	"LFD-projects.git",
+	"Machine-learning.git",
+	"Books.git",
+	"working.git"]:
+	os.system(f"git clone {f + i}")

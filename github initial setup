@@ -1,34 +1,33 @@
-# github
-cd ~ ; mkdir github ; cd github/ ; git init ; git config --global user.name "amirsaleem1990" ; git config --global user.email "amirsaleem1990@hotmail.com"
+cd ~ 
+rm -rf github
+mkdir github
+cd github/
+git init
+git config --global user.name  "amirsaleem1990"
+git config --global user.email "amirsaleem1990@hotmail.com"
 
-1- go to https://github.com/settings/keys and delete existing SSH key
-2- ssh-keygen -t rsa -b 4096 -C "amirsaleem1990@hotmail.com"
-3- When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
-4- At the prompt, press Enter
-5- eval "$(ssh-agent -s)"
-6- ssh-add ~/.ssh/id_rsa
-7- sudo apt-get install xclip
-8- xclip -sel clip < ~/.ssh/id_rsa.pub
-9- go to https://github.com/settings/keys
-10- Click New SSH key or Add SSH key
-11- In the "Title" field, add a descriptive label for the new key. For example, if you're using a personal Mac, you might call this key "Personal MacBook Air".
-12- CTRL+V (ve copied a key in line 8)
-13 - Click Add SSH key. 
+echo -e "`echo $'\n\n '`delete existing SSH key in new opened window in firefox"
+firefox https://github.com/settings/keys
 
+read -p  "`echo $'\n\n '`after deleting existing SSH key press any key to proceed"
 
-14- ipython
-import os
-base = ""
-f = "git@github.com:amirsaleem1990/"
-for i in ["Linux.git",
-	"short-codes.git",
-	"Notes.git", 
-	"Data_Cleaning.git", 
-	"R_language.git", 
-	"Kaggle-compitations.git", 
-	"Amir-personal.git", 
-	"LFD-projects.git",
-	"Machine-learning.git",
-	"Books.git",
-	"working.git"]:
-	os.system(f"git clone {f + i}")
+echo "`echo $'\n\n '`Press Enter for each"
+ssh-keygen -t rsa -b 4096 -C "amirsaleem1990@hotmail.com"
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+yes | sudo apt-get install xclip
+xclip -sel clip < ~/.ssh/id_rsa.pub
+
+echo "`echo $'\n\n '`1- Click New SSH key or Add SSH key"
+echo "2- in the <Key> section press CTRL+V"
+echo "3- Click Add SSH key"
+firefox https://github.com/settings/keys
+
+read -p  "`echo $'\n\n '`after adding SSH key press any key to proceed"
+for repo in {Linux,short-codes,Notes,Data_Cleaning,R_language,Kaggle-compitations,Amir-personal,LFD-projects,Machine-learning,Books,working}; 
+	do 
+	com=`echo "git@github.com:amirsaleem1990/$repo.git"`
+	# echo $com
+	git clone $com
+done

@@ -25,7 +25,7 @@ echo "3- Click Add SSH key"
 firefox https://github.com/settings/keys
 
 read -p  "`echo $'\n\n '`after adding SSH key press any key to proceed"
-for repo in {Linux,short-codes,Notes,Data_Cleaning,R_language,Kaggle-compitations,Amir-personal,LFD-projects,Machine-learning,Books,working}; 
+for repo in {Linux,short-codes,Notes,Data_Cleaning,R_language,Kaggle-compitations,Amir-personal,LFD_projects_2,Machine-learning,Books,working}; 
 	do 
 	com=`echo "git@github.com:amirsaleem1990/$repo.git"`
 	# echo $com

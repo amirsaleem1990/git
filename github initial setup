@@ -1,48 +1,41 @@
+#!/bin/bash
 cd ~ 
-rm -rf github
+rm -rf github || rm -f github 2>/dev/null
 mkdir github
 cd github/
 git init
 git config --global user.name  "amirsaleem1990"
 git config --global user.email "amirsaleem1990@hotmail.com"
 
-#echo -e "`echo $'\n\n '`delete existing SSH key in new opened window in firefox"
-#firefox https://github.com/settings/keys
 
-#read -p  "`echo $'\n\n '`after deleting existing SSH key press any key to proceed"
+test -e   ~/.ssh/id_rsa.pub
+if [[ $? == 0 ]]; then
+	ssh-add ~/.ssh/id_rsa
+else
+	echo -e "`echo $'\n\n '`delete existing SSH key in new opened window in firefox"
+	firefox https://github.com/settings/keys
 
-#echo "`echo $'\n\n '`Press Enter for each"
-#ssh-keygen -t rsa -b 4096 -C "amirsaleem1990@hotmail.com"
+	read -p  "`echo $'\n\n '`after deleting existing SSH key press any key to proceed"
 
-#eval "$(ssh-agent -s)"
-#ssh-add ~/.ssh/id_rsa
-#yes | sudo apt-get install xclip
-#xclip -sel clip < ~/.ssh/id_rsa.pub
+	echo "`echo $'\n\n '`Press Enter for each"
+	ssh-keygen -t rsa -b 4096 -C "amirsaleem1990@hotmail.com"
 
-#echo "`echo $'\n\n '`1- Click New SSH key or Add SSH key"
-#echo "2- in the <Key> section press CTRL+V"
-#echo "3- Click Add SSH key"
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/id_rsa
+	yes | sudo apt-get install xclip
+	xclip -sel clip < ~/.ssh/id_rsa.pub
 
-#firefox https://github.com/settings/keys
-#read -p  "`echo $'\n\n '`after adding SSH key press any key to proceed"
+	echo "`echo $'\n\n '`1- Click New SSH key or Add SSH key"
+	echo "2- in the <Key> section press CTRL+V"
+	echo "3- Click Add SSH key"
+	firefox https://github.com/settings/keys
 
-pwd
-echo -e "
-copy ssh keys to .ssh, the permitions in .ssh folder should match below lines:
-=== (you can do it by: chmod 400 id_rsa* ) ==
-\tdrwx------  .
-\tdrwxr-xr-x  ..
-\t-rwxrwxr-x  config
-\t-r--------  id_rsa
-\t-r--------  id_rsa.pub
-\t-rwxrwxr-x  known_hosts
+	read -p  "`echo $'\n\n '`after adding SSH key press any key to proceed"
+fi
 
-press any key after completing this step: 
-"
-read aqf
-
-IFS=$'\n'
-for repo in {Linux,short-codes,Notes,Data_Cleaning,R_language,Kaggle-compitations,Amir-personal,LFD_projects_2,Machine-learning,Books,working,Pandas,Daily_facebook};  do 
+for repo in {Linux,short-codes,Notes,Data_Cleaning,R_language,Kaggle-compitations,Amir-personal,LFD_projects_2,Machine-learning,Books,working,Pandas,Daily_facebook}; 
+	do 
 	com=`echo "git@github.com:amirsaleem1990/$repo.git"`
+	# echo $com
 	git clone $com
 done

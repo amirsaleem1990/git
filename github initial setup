@@ -10,27 +10,40 @@ git config --global user.email "amirsaleem1990@hotmail.com"
 
 test -e   ~/.ssh/id_rsa.pub
 if [[ $? == 0 ]]; then
-	ssh-add ~/.ssh/id_rsa
+	ssh-add   ~/.ssh/id_rsa
+	chmod 400 ~/.ssh/id_rsa*
 else
-	echo -e "`echo $'\n\n '`delete existing SSH key in new opened window in firefox"
-	firefox https://github.com/settings/keys
+	echo "~/.ssh/id_rsa.pub file not found, please create/copy the file"
+	exit 1
 
-	read -p  "`echo $'\n\n '`after deleting existing SSH key press any key to proceed"
+	# copy ssh keys to .ssh, the permitions in .ssh folder should match below lines:
+	# === (you can do it by: chmod 400 id_rsa* ) ==
+	# drwx------  .
+	# drwxr-xr-x  ..
+	# -rwxrwxr-x  config
+	# -r--------  id_rsa
+	# -r--------  id_rsa.pub
+	# -rwxrwxr-x  known_hosts
 
-	echo "`echo $'\n\n '`Press Enter for each"
-	ssh-keygen -t rsa -b 4096 -C "amirsaleem1990@hotmail.com"
+	# echo -e "`echo $'\n\n '`delete existing SSH key in new opened window in firefox"
+	# firefox https://github.com/settings/keys
 
-	eval "$(ssh-agent -s)"
-	ssh-add ~/.ssh/id_rsa
-	yes | sudo apt-get install xclip
-	xclip -sel clip < ~/.ssh/id_rsa.pub
+	# read -p  "`echo $'\n\n '`after deleting existing SSH key press any key to proceed"
 
-	echo "`echo $'\n\n '`1- Click New SSH key or Add SSH key"
-	echo "2- in the <Key> section press CTRL+V"
-	echo "3- Click Add SSH key"
-	firefox https://github.com/settings/keys
+	# echo "`echo $'\n\n '`Press Enter for each"
+	# ssh-keygen -t rsa -b 4096 -C "amirsaleem1990@hotmail.com"
 
-	read -p  "`echo $'\n\n '`after adding SSH key press any key to proceed"
+	# eval "$(ssh-agent -s)"
+	# ssh-add ~/.ssh/id_rsa
+	# yes | sudo apt-get install xclip
+	# xclip -sel clip < ~/.ssh/id_rsa.pub
+
+	# echo "`echo $'\n\n '`1- Click New SSH key or Add SSH key"
+	# echo "2- in the <Key> section press CTRL+V"
+	# echo "3- Click Add SSH key"
+	# firefox https://github.com/settings/keys
+
+	# read -p  "`echo $'\n\n '`after adding SSH key press any key to proceed"
 fi
 
 for repo in {Linux,short-codes,Notes,Data_Cleaning,R_language,Kaggle-compitations,Amir-personal,LFD_projects_2,Machine-learning,Books,working,Pandas,Daily_facebook}; 
@@ -39,3 +52,4 @@ for repo in {Linux,short-codes,Notes,Data_Cleaning,R_language,Kaggle-compitation
 	# echo $com
 	git clone $com
 done
+

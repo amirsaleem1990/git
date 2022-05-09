@@ -12,3 +12,8 @@ if you get like below:
 run:
   git remote set-url origin git@github.com:User/UserRepo.git
   
+
+# commit logs with file name (with full commit id) 
+git log --name-only
+# commit logs with file name (with short commit id) 
+git log --name-only --oneline

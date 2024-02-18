@@ -10,8 +10,15 @@ git config --global user.email "amirsaleem1990@hotmail.com"
 
 test -e   ~/.ssh/id_rsa.pub
 if [[ $? == 0 ]]; then
+	chmod 600 ~/.ssh/config
+	chown amir:amir ~/.ssh/config
+
+	chmod 600 ~/.ssh/id_rsa
+	chmod 644 ~/.ssh/id_rsa.pub
+
 	ssh-add   ~/.ssh/id_rsa
-	chmod 400 ~/.ssh/id_rsa*
+
+
 else
 	echo "~/.ssh/id_rsa.pub file not found, please create/copy the file"
 	exit 1
